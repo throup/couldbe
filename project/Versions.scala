@@ -6,5 +6,5 @@ object Versions {
   def catsScalacheck      = "0.3.2"
   def disciplineScalatest = "2.2.0"
   def scalaLogging        = "3.9.4"
-  def logback             = "1.2.12"
+  def logback             = "1.4.7"
 }
