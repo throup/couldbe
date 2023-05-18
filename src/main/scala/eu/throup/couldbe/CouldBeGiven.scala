@@ -1,7 +1,6 @@
 package eu.throup
 package couldbe
 
-import cats.*
 import scala.util.NotGiven
 
 sealed trait CouldBeGiven[A]:
