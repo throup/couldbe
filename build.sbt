@@ -1,6 +1,16 @@
 ThisBuild / scalaVersion := "3.2.2"
-scalacOptions += "-feature"
-scalacOptions += "-explain"
+
+scalacOptions ++= {
+  Seq(
+    "-encoding", "UTF-8",
+    "-feature",
+    "-Xfatal-warnings",
+    "-deprecation",
+    "-source:3.2",
+    "-explain",
+    "-explain-types",
+  )
+}
 
 githubOwner := "throup"
 githubRepository := "couldbe"
