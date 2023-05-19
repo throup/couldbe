@@ -28,6 +28,10 @@ class IsNotGiven[A] extends CouldBeGiven[A]:
   override def isGiven: Boolean = false
   override def gift: Option[A]  = None
 
+type CouldBe = [F[_]] =>> [A] =>> CouldBeGiven[F[A]]
+object CouldBe:
+  def apply[F[_], A](using gof: CouldBeGiven[F[A]]): CouldBe[F][A] = gof
+
 type CouldHave = [F[_[_]]] =>> [A[_]] =>> CouldBeGiven[F[A]]
 object CouldHave:
   def apply[F[_[_]], A[_]](using gof: CouldBeGiven[F[A]]): CouldHave[F][A] = gof
