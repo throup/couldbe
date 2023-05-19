@@ -45,5 +45,9 @@ jobs:
           java-version: '11'
           distribution: 'temurin'
           cache: 'sbt'
+      - name: Configure git
+        run: |
+          git config --global user.email "github@throup.eu"
+          git config --global user.name "Github Actions (for eu.throup)"
       - name: Publish new release
         run: sbt "release with-defaults"
