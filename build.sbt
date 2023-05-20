@@ -34,6 +34,7 @@ lazy val commonSettings = Seq(
 
 lazy val root = (project in file("."))
   .settings(name := "couldbe")
+  .settings(commonSettings)
   .aggregate(core, cats, testsupport, testsuite)
   .dependsOn(core, cats)
 
