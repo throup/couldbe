@@ -2,6 +2,7 @@ ThisBuild / scalaVersion := "3.2.2"
 ThisBuild / organization := "eu.throup"
 ThisBuild / githubOwner := "throup"
 ThisBuild / githubRepository := "couldbe"
+ThisBuild / versionScheme := Some("early-semver")
 
 lazy val overrides = Seq(
   // Plugin versions; update these in project/plugins.sbt as well
