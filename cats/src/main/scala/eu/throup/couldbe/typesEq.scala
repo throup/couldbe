@@ -6,7 +6,7 @@ import cats.*
 trait EqHierarchy[A] extends Hash[A], PartialOrder[A]
 given [A: HashOrHashCode: PartialOrderOrEq]: EqHierarchy[CouldBeGiven[A]] =
   new EqHierarchy[CouldBeGiven[A]]:
-    override def hash(x: CouldBeGiven[A]): Int = x.gift.map(HashOrHashCode[A].h(_)).getOrElse(0)
+    override def hash(x: CouldBeGiven[A]): Int = x.gift.map(HashOrHashCode.h(_)).getOrElse(0)
 
     override def partialCompare(x: CouldBeGiven[A], y: CouldBeGiven[A]): Double =
       (x, y) match
@@ -17,6 +17,6 @@ given [A: HashOrHashCode: PartialOrderOrEq]: EqHierarchy[CouldBeGiven[A]] =
 
 given [A: HashOrHashCode: PartialOrderOrEq]: EqHierarchy[IsGiven[A]] =
   new EqHierarchy[IsGiven[A]]:
-    override def hash(x: IsGiven[A]): Int = x.gift.map(HashOrHashCode[A].h(_)).getOrElse(0)
+    override def hash(x: IsGiven[A]): Int = x.gift.map(HashOrHashCode.h(_)).getOrElse(0)
 
     override def partialCompare(x: IsGiven[A], y: IsGiven[A]): Double = PartialOrderOrEq.p(x.get, y.get)

@@ -7,14 +7,6 @@ object Versions {
 
   def scalatestPlus       = "3.2.14.0"
 
-  def catsScalacheck      = "0.3.2"
-
-  def disciplineScalatest = "2.2.0"
-
-  def scalaLogging        = "3.9.5"
-
-  def logback             = "1.4.7"
-
   object Plugin {
     // Manually update this value in project/plugins.sbt as well
     def sbtGithubPackages = "0.5.3"
