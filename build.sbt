@@ -1,8 +1,7 @@
 ThisBuild / scalaVersion := "3.2.2"
 ThisBuild / organization := "eu.throup"
-
-githubOwner      := "throup"
-githubRepository := "couldbe"
+ThisBuild / githubOwner := "throup"
+ThisBuild / githubRepository := "couldbe"
 
 lazy val overrides = Seq(
   // Plugin versions; update these in project/plugins.sbt as well
@@ -27,7 +26,9 @@ lazy val commonSettings = Seq(
     "-explain",
     "-explain-types"
   ),
-  dependencyOverrides ++= overrides
+  dependencyOverrides ++= overrides,
+  githubOwner      := "throup",
+  githubRepository := "couldbe"
 )
 
 lazy val root = (project in file("."))
