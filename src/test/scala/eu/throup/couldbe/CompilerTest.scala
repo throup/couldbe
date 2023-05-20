@@ -16,13 +16,13 @@ class CompilerTest extends AnyFreeSpec with Matchers:
     type EitherUnit[A]            = Either[Unit, A]
 
     def willFailIfNotOne[
-        F[_]: Monad: CouldHave[MonadThrow]: CouldHave[MonadStringFailure]: CouldHave[MonadSilentFailure]
+        F[_]: Monad: CouldBe[MonadThrow]: CouldBe[MonadStringFailure]: CouldBe[MonadSilentFailure]
     ](n: Int) =
       if n == 1 then Monad[F].pure("That's great!")
       else
-        CouldHave[MonadThrow, F].act(_.raiseError(new Exception("It's gone wrong!"))) { () =>
-          CouldHave[MonadStringFailure, F].act(_.raiseError("It's gone wrong!")) { () =>
-            CouldHave[MonadSilentFailure, F].act(_.raiseError(()))(() => throw new Exception("It's gone wrong!"))
+        CouldBe[MonadThrow, F].act(_.raiseError(new Exception("It's gone wrong!"))) { () =>
+          CouldBe[MonadStringFailure, F].act(_.raiseError("It's gone wrong!")) { () =>
+            CouldBe[MonadSilentFailure, F].act(_.raiseError(()))(() => throw new Exception("It's gone wrong!"))
           }
         }
 
