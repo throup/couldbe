@@ -1,3 +1,7 @@
+---
+title: optional Givens for Scala
+---
+
 # couldbe: optional Givens for Scala
 [![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/throup/couldbe/scala.yml)](https://github.com/throup/couldbe/actions/workflows/scala.yml)
 [![codecov](https://codecov.io/gh/throup/couldbe/branch/main/graph/badge.svg?token=XSUAQWYIOO)](https://codecov.io/gh/throup/couldbe)
@@ -79,7 +83,3 @@ def yourFunction[A: CouldBeGiven, B: CouldHave[PartialOrder], F[_]: CouldBe[Mona
 ## Authors
 
 * **Chris Throup** - [github](https://github.com/throup) - [linkedin](https://www.linkedin.com/in/christhroup)
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details

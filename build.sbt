@@ -12,7 +12,9 @@ lazy val overrides = Seq(
   "com.github.sbt" % "sbt-release_2.12_1.0"         % Versions.Plugin.sbtRelease,
   "org.scoverage"  % "sbt-scoverage"                % Versions.Plugin.sbtCoverage,
   "org.scoverage"  % "sbt-scoverage_2.12_1.0"       % Versions.Plugin.sbtCoverage,
-  // Transitive dependencies; versions specified to avoid known vulnerabilities
+  "org.scalameta"  % "sbt-mdoc"                     % Versions.Plugin.sbtMdoc,
+  "org.scalameta"  % "sbt-mdoc_2.12_1.0"            % Versions.Plugin.sbtMdoc,
+// Transitive dependencies; versions specified to avoid known vulnerabilities
   "com.google.protobuf"        % "protobuf-java"    % Versions.Override.protobufJava,
   "com.fasterxml.jackson.core" % "jackson-databind" % Versions.Override.jacksonDatabind,
   "org.jsoup"                  % "jsoup"            % Versions.Override.jsoup,
@@ -81,3 +83,14 @@ lazy val testsuite = project
     ).map(_ % Test)
   )
   .dependsOn(core, cats, testsupport)
+
+lazy val docs = (project in file("couldbe-docs")) // important: it must not be docs/
+  .settings(
+    moduleName := "couldbe-docs",
+    mdocVariables := Map(
+      "VERSION"                  -> version.value,
+      "VERSIONsbtgithubpackages" -> Versions.Plugin.sbtGithubPackages
+    )
+  )
+  .dependsOn(core, cats)
+  .enablePlugins(MdocPlugin, DocusaurusPlugin)
