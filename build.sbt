@@ -18,7 +18,9 @@ lazy val overrides = Seq(
   "com.google.protobuf"        % "protobuf-java"    % Versions.Override.protobufJava,
   "com.fasterxml.jackson.core" % "jackson-databind" % Versions.Override.jacksonDatabind,
   "org.jsoup"                  % "jsoup"            % Versions.Override.jsoup,
-  "org.yaml"                   % "snakeyaml"        % Versions.Override.snakeyaml
+  "org.yaml"                   % "snakeyaml"        % Versions.Override.snakeyaml,
+  "org.apache.pdfbox"          % "pdfbox"           % Versions.Override.pdfbox,
+  "io.undertow"                % "undertow-core"    % Versions.Override.undertow
 )
 
 lazy val commonSettings = Seq(
