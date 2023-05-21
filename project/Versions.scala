@@ -1,11 +1,11 @@
 object Versions {
-  def cats                = "2.9.0"
+  def cats = "2.9.0"
 
-  def catsTestkit         = "2.1.5"
+  def catsTestkit = "2.1.5"
 
-  def scalatest           = "3.2.16"
+  def scalatest = "3.2.16"
 
-  def scalatestPlus       = "3.2.14.0"
+  def scalatestPlus = "3.2.14.0"
 
   object Plugin {
     // Manually update this value in project/plugins.sbt as well
@@ -28,5 +28,9 @@ object Versions {
     def jsoup = "[1.15.3,)"
 
     def snakeyaml = "[2.0,)"
+
+    def pdfbox = "[2.0.24,)"
+
+    def undertow = "[2.2.24.Final,)"
   }
 }
