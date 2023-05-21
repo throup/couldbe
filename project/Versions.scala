@@ -13,6 +13,9 @@ object Versions {
 
     // Manually update this value in project/plugins.sbt as well
     def sbtRelease = "1.1.0"
+
+    // Manually update this value in project/plugins.sbt as well
+    def sbtCoverage = "2.0.7"
   }
   object Override {
     def protobufJava = "[3.16.3,)"
