@@ -34,8 +34,7 @@ lazy val commonSettings = Seq(
   ),
   dependencyOverrides ++= overrides,
   githubOwner      := "throup",
-  githubRepository := "couldbe",
-  coverageEnabled  := true
+  githubRepository := "couldbe"
 )
 
 lazy val root = (project in file("."))
