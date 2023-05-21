@@ -91,5 +91,6 @@ lazy val docs = (project in file("couldbe-docs")) // important: it must not be d
       "VERSIONsbtgithubpackages" -> Versions.Plugin.sbtGithubPackages
     )
   )
+  .settings(commonSettings)
   .dependsOn(core, cats)
   .enablePlugins(MdocPlugin, DocusaurusPlugin)
