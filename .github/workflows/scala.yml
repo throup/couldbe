@@ -55,4 +55,4 @@ jobs:
           git config --global user.email "github@throup.eu"
           git config --global user.name "Github Actions (for eu.throup)"
       - name: Publish new release
-        run: sbt "release with-defaults"
+        run: sbt "+release with-defaults"
