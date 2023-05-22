@@ -30,14 +30,25 @@ lazy val commonSettings = Seq(
     "-feature",
     "-Xfatal-warnings",
     "-deprecation",
-    "-source:3.2",
-    "-explain",
-    "-explain-types"
-  ),
+  ) ++
+    (CrossVersion.partialVersion(scalaVersion.value) match {
+      case Some((3, _)) => Seq(
+        "-source:3.2",
+        "-explain",
+        "-explain-types",
+      )
+      case _ => Seq(
+        "-Xsource:3.2",
+        "-Wunused:imports,privates,locals",
+        "-Wvalue-discard",
+      )
+    }),
   dependencyOverrides ++= overrides,
   githubOwner      := "throup",
   githubRepository := "couldbe"
 )
+
+lazy val crossScala = Seq(crossScalaVersions := Seq("2.13.10", "3.2.2"))
 
 lazy val root = (project in file("."))
   .settings(name := "couldbe")
@@ -48,10 +59,12 @@ lazy val root = (project in file("."))
 lazy val core = project
   .settings(name := "couldbe-core")
   .settings(commonSettings)
+  .settings(crossScala)
 
 lazy val cats = project
   .settings(name := "couldbe-cats")
   .settings(commonSettings)
+  .settings(crossScala)
   .settings(
     libraryDependencies ++= Seq(
       "org.typelevel" %% "cats-core" % Versions.cats
@@ -62,6 +75,7 @@ lazy val cats = project
 lazy val testsupport = project
   .settings(name := "couldbe-testsupport")
   .settings(commonSettings)
+  .settings(crossScala)
   .settings(
     libraryDependencies ++= Seq(
       "org.scalatestplus" %% "scalacheck-1-16" % Versions.scalatestPlus
@@ -72,6 +86,7 @@ lazy val testsupport = project
 lazy val testsuite = project
   .settings(name := "couldbe-testsupport")
   .settings(commonSettings)
+  .settings(crossScala)
   .settings(
     publishArtifact := false,
     publish / skip  := true
