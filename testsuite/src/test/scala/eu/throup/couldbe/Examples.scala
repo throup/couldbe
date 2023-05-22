@@ -4,13 +4,13 @@ package couldbe
 import org.scalatest.freespec.AnyFreeSpec
 import org.scalatest.matchers.should.Matchers
 
-class Examples extends AnyFreeSpec with Matchers:
+class Examples extends AnyFreeSpec with Matchers {
   "Simple given parameter" - {
 
-    def simpleGivenParameter(using message: CouldBeGiven[String]) =
-      message match
+    def simpleGivenParameter(using message: CouldBeGiven[String]) = message match {
         case IsGiven(actual) => actual
-        case IsNotGiven      => "This is a default string"
+        case IsNotGiven => "This is a default string"
+      }
 
     "A String is given" in {
       given String = "This string is given"
@@ -21,3 +21,4 @@ class Examples extends AnyFreeSpec with Matchers:
       simpleGivenParameter shouldBe "This is a default string"
     }
   }
+}

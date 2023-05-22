@@ -5,18 +5,19 @@ import cats.*
 import org.scalatest.freespec.AnyFreeSpec
 import org.scalatest.matchers.should.Matchers
 
-class CouldHaveTest extends AnyFreeSpec with Matchers:
+class CouldHaveTest extends AnyFreeSpec with Matchers {
   "Prove it" in {
     trait SomethingToBe[A]
+
     given SomethingToBe[BigInt] = new SomethingToBe[BigInt]() {}
 
     def willItCompile[A: CouldHave[SomethingToBe]]: String =
       CouldHave[SomethingToBe, A].act((td: SomethingToBe[A]) => "I got a SomethingToBe!!!!\n")(() => "I got nothing!!!\n")
 
-    val exampleWillInt    = willItCompile[Int]
+    val exampleWillInt = willItCompile[Int]
     val exampleWillBigInt = willItCompile[BigInt]
     val exampleWillString = willItCompile[String]
-    val exampleWill       = exampleWillInt + exampleWillBigInt + exampleWillString
+    val exampleWill = exampleWillInt + exampleWillBigInt + exampleWillString
 
     exampleWill shouldBe
       """I got nothing!!!
@@ -24,3 +25,4 @@ class CouldHaveTest extends AnyFreeSpec with Matchers:
         |I got nothing!!!
         |""".stripMargin
   }
+}
