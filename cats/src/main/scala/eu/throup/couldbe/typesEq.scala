@@ -17,6 +17,6 @@ given [A: HashOrHashCode: PartialOrderOrEq]: EqHierarchy[CouldBeGiven[A]] =
 
 given [A: HashOrHashCode: PartialOrderOrEq]: EqHierarchy[IsGiven[A]] =
   new EqHierarchy[IsGiven[A]]:
-    override def hash(x: IsGiven[A]): Int = x.gift.map(HashOrHashCode.h(_)).getOrElse(0)
+    override def hash(x: IsGiven[A]): Int = HashOrHashCode.h(x.get)
 
     override def partialCompare(x: IsGiven[A], y: IsGiven[A]): Double = PartialOrderOrEq.p(x.get, y.get)
