@@ -45,7 +45,15 @@ lazy val commonSettings = Seq(
     }),
   dependencyOverrides ++= overrides,
   githubOwner      := "throup",
-  githubRepository := "couldbe"
+  githubRepository := "couldbe",
+  libraryDependencies ++= {
+    CrossVersion.partialVersion(scalaVersion.value) match {
+      case Some((3, _)) => Seq()
+      case Some((2, _)) => Seq(
+        compilerPlugin("org.typelevel" % "kind-projector" % "0.13.2" cross CrossVersion.full)
+      )
+    }
+  }
 )
 
 lazy val crossScala = Seq(crossScalaVersions := Seq("2.13.10", "3.2.2"))
