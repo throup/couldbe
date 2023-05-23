@@ -1,7 +1,7 @@
 package eu.throup
 package couldbe
 
-import org.scalacheck.{*, given}
+import org.scalacheck.{given, *}
 
 package object testsupport {
   def genIsGiven[A: Arbitrary]: Gen[IsGiven[A]]                = Arbitrary.arbitrary[A].map(IsGiven(_))

@@ -5,21 +5,18 @@ package testfixtures
 import cats.*
 import org.scalacheck.{Arbitrary, Cogen, Gen}
 
-object CustomType {
+object CustomType:
   trait SomethingToBe[A]
-  object SomethingToBe {
+  object SomethingToBe:
     given SomethingToBe[BigInt] = new SomethingToBe[BigInt]() {}
-  }
 
   // Define a type which has no inherent Order (or PartialOrder) to test our
   // permissive definition of PartialOrder.
-  enum NoOrder {
+  enum NoOrder:
     case A, B, Monkfish, Profit
-  }
-  given hashNoOrder: Hash[NoOrder] = new Hash[NoOrder] {
+  given hashNoOrder: Hash[NoOrder] = new Hash[NoOrder]:
     override def hash(x: NoOrder): Int                = x.hashCode()
     override def eqv(x: NoOrder, y: NoOrder): Boolean = x == y
-  }
   given arbNoOrder: Arbitrary[NoOrder] = Arbitrary {
     Gen.oneOf(NoOrder.A, NoOrder.B, NoOrder.Monkfish, NoOrder.Profit)
   }
@@ -35,4 +32,3 @@ object CustomType {
   type EitherThrowable[A]       = Either[Throwable, A]
   type EitherString[A]          = Either[String, A]
   type EitherUnit[A]            = Either[Unit, A]
-}

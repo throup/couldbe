@@ -1,7 +1,7 @@
 package eu.throup
 package couldbe
 
-private[couldbe] trait CouldBeGivenCompanion {
+private[couldbe] trait CouldBeGivenCompanion:
   given [A](using a: A): CouldBeGiven[A] = isGiven(a)
 
   given [A](using NotGiven[A]): CouldBeGiven[A] = isNotGiven
@@ -13,4 +13,3 @@ private[couldbe] trait CouldBeGivenCompanion {
   def isGiven[A](a: A): CouldBeGiven[A] = IsGiven(a)
 
   def isNotGiven[A]: CouldBeGiven[A] = IsNotGiven
-}
