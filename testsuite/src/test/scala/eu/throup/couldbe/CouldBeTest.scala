@@ -1,21 +1,18 @@
 package eu.throup
 package couldbe
 
-import cats.*
+import testfixtures.ExampleFunction
 import org.scalatest.freespec.AnyFreeSpec
 import org.scalatest.matchers.should.Matchers
 
 class CouldBeTest extends AnyFreeSpec with Matchers {
   "Prove it" in {
-    def willItCompile[A[_]](implicit A: CouldBe[Monad, A]): String =
-      CouldBe[Monad, A].act((monad: Monad[A]) => "I got a Monad!!!!\n")(() => "I got nothing!!!\n")
-
     // This type definitely does not have a Monad
     class Sam[A]
 
-    val exampleWillInt = willItCompile[List]
-    val exampleWillString = willItCompile[Sam]
-    val exampleWillDouble = willItCompile[Option]
+    val exampleWillInt = ExampleFunction.couldBeAMonad[List]
+    val exampleWillString = ExampleFunction.couldBeAMonad[Sam]
+    val exampleWillDouble = ExampleFunction.couldBeAMonad[Option]
     val exampleWill = exampleWillInt + exampleWillString + exampleWillDouble
 
     exampleWill shouldBe

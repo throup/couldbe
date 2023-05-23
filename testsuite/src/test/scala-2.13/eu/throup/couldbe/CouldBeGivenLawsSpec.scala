@@ -1,13 +1,12 @@
 package eu.throup
 package couldbe
 
-import eu.throup.couldbe.testsupport.*
-import eu.throup.couldbe.typeclasses.*
+import testsupport.*
+import typeclasses.*
+import testfixtures.CustomType.{*, given}
 
-import cats.*
 import cats.kernel.laws.discipline.*
 import cats.laws.discipline.*
-import org.scalacheck.*
 import org.scalatest.funsuite.AnyFunSuiteLike
 import org.scalatestplus.scalacheck.ScalaCheckPropertyChecks
 import org.typelevel.discipline.scalatest.FunSuiteDiscipline
@@ -35,26 +34,6 @@ class CouldBeGivenLawsSpec extends FunSuiteDiscipline with AnyFunSuiteLike with 
   checkAll("CouldBeGiven[List[Int]].Hash", HashTests[CouldBeGiven[List[Int]]].hash)
   checkAll("CouldBeGiven[List[Int]].PartialOrder", PartialOrderTests[CouldBeGiven[List[Int]]].partialOrder)
 
-  // Define a type which has no inherent Order (or PartialOrder) to test our
-  // permissive definition of PartialOrder.
-  sealed trait NoOrder
-  object NoOrder {
-    case object A extends NoOrder
-    case object B extends NoOrder
-    case object Monkfish extends NoOrder
-    case object Profit extends NoOrder
-  }
-  implicit val implicitHashNoOrder: Hash[NoOrder] = new Hash[NoOrder]{
-    override def hash(x: NoOrder): Int = x.hashCode()
-    override def eqv(x: NoOrder, y: NoOrder): Boolean = x == y
-  }
-  implicit val implicitArbitraryNoOrder: Arbitrary[NoOrder] = Arbitrary{ Gen.oneOf(NoOrder.A, NoOrder.B, NoOrder.Monkfish, NoOrder.Profit) }
-  implicit val implicitCogenNoOrder:  Cogen[NoOrder] = Cogen[Int].contramap {
-    case NoOrder.A => 0
-    case NoOrder.B => 67
-    case NoOrder.Monkfish => -245
-    case NoOrder.Profit => 42
-  }
   checkAll("CouldBeGiven[NoOrder].Hash", HashTests[CouldBeGiven[NoOrder]].hash)
   checkAll("CouldBeGiven[NoOrder].PartialOrder", PartialOrderTests[CouldBeGiven[NoOrder]].partialOrder)
 }

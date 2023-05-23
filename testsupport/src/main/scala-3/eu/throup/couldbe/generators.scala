@@ -3,6 +3,9 @@ package couldbe
 
 import org.scalacheck.{*, given}
 
+// placeholder to provide compatibility with Scala 2.13 imports
+object testsupport {}
+
 def genIsGiven[A: Arbitrary]: Gen[IsGiven[A]] = Arbitrary.arbitrary[A].map(IsGiven(_))
 given [A: Arbitrary]: Arbitrary[IsGiven[A]]   = Arbitrary(genIsGiven)
 
