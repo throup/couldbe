@@ -36,7 +36,7 @@ class CompilerTest extends AnyFreeSpec with Matchers {
       "For Try" in {
         ExampleFunction.willFailIfNotOne[Try](2) match {
           case Failure(e) => e.getMessage shouldBe "It's gone wrong!"
-          case _ => fail()
+          case _          => fail()
         }
       }
       "For Option" in {
@@ -45,7 +45,7 @@ class CompilerTest extends AnyFreeSpec with Matchers {
       "For Either[_, Throwable]" in {
         ExampleFunction.willFailIfNotOne[EitherThrowable](2) match {
           case Left(e) => e.getMessage shouldBe "It's gone wrong!"
-          case _ => fail()
+          case _       => fail()
         }
       }
       "For Either[_, String]" in {

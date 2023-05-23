@@ -6,14 +6,11 @@ ThisBuild / versionScheme    := Some("early-semver")
 
 lazy val overrides = Seq(
   // Plugin versions; update these in project/plugins.sbt as well
-  "com.codecommit" % "sbt-github-packages"          % Versions.Plugin.sbtGithubPackages,
   "com.codecommit" % "sbt-github-packages_2.12_1.0" % Versions.Plugin.sbtGithubPackages,
-  "com.github.sbt" % "sbt-release"                  % Versions.Plugin.sbtRelease,
   "com.github.sbt" % "sbt-release_2.12_1.0"         % Versions.Plugin.sbtRelease,
-  "org.scoverage"  % "sbt-scoverage"                % Versions.Plugin.sbtCoverage,
   "org.scoverage"  % "sbt-scoverage_2.12_1.0"       % Versions.Plugin.sbtCoverage,
-  "org.scalameta"  % "sbt-mdoc"                     % Versions.Plugin.sbtMdoc,
   "org.scalameta"  % "sbt-mdoc_2.12_1.0"            % Versions.Plugin.sbtMdoc,
+  "org.scalameta"  % "sbt-scalafmt_2.12_1.0"        % Versions.Plugin.scalaFmt,
 // Transitive dependencies; versions specified to avoid known vulnerabilities
   "com.google.protobuf"        % "protobuf-java"    % Versions.Override.protobufJava,
   "com.fasterxml.jackson.core" % "jackson-databind" % Versions.Override.jacksonDatabind,
@@ -29,19 +26,21 @@ lazy val commonSettings = Seq(
     "UTF-8",
     "-feature",
     "-Xfatal-warnings",
-    "-deprecation",
+    "-deprecation"
   ) ++
     (CrossVersion.partialVersion(scalaVersion.value) match {
-      case Some((3, _)) => Seq(
-        "-source:3.2",
-        "-explain",
-        "-explain-types",
-      )
-      case _ => Seq(
-        "-Xsource:3.2",
-        "-Wunused:imports,privates,locals",
-        "-Wvalue-discard",
-      )
+      case Some((3, _)) =>
+        Seq(
+          "-source:3.2",
+          "-explain",
+          "-explain-types"
+        )
+      case _ =>
+        Seq(
+          "-Xsource:3.2",
+          "-Wunused:imports,privates,locals",
+          "-Wvalue-discard"
+        )
     }),
   dependencyOverrides ++= overrides,
   githubOwner      := "throup",
@@ -49,9 +48,10 @@ lazy val commonSettings = Seq(
   libraryDependencies ++= {
     CrossVersion.partialVersion(scalaVersion.value) match {
       case Some((3, _)) => Seq()
-      case Some((2, _)) => Seq(
-        compilerPlugin("org.typelevel" % "kind-projector" % "0.13.2" cross CrossVersion.full)
-      )
+      case Some((2, _)) =>
+        Seq(
+          compilerPlugin("org.typelevel" % "kind-projector" % "0.13.2" cross CrossVersion.full)
+        )
     }
   }
 )

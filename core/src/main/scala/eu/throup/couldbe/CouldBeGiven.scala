@@ -9,7 +9,7 @@ sealed trait CouldBeGiven[+A] {
   def act[B](f: A => B)(g: () => B): B =
     gift match {
       case Some(a) => f(a)
-      case None => g()
+      case None    => g()
     }
 
   def map[B](f: A => B): CouldBeGiven[B]

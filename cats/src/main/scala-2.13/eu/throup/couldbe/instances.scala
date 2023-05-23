@@ -26,7 +26,8 @@ object HashOrHashCode {
 }
 
 trait EqOrEquals[A] {
-  def e(x: A, y: A)(implicit E: CouldHave[Eq, A]): Boolean = CouldHave[Eq, A].act(_.eqv(x, y))(() => (x == y) && (y == x))
+  def e(x: A, y: A)(implicit E: CouldHave[Eq, A]): Boolean =
+    CouldHave[Eq, A].act(_.eqv(x, y))(() => (x == y) && (y == x))
 }
 object EqOrEquals {
   implicit def implicitEqOrEquals[A](implicit E: CouldHave[Eq, A]): EqOrEquals[A] = new EqOrEquals[A] {}
@@ -41,7 +42,8 @@ trait PartialOrderOrEq[A] {
     CouldHave[PartialOrder, A].act(_.partialCompare(x, y))(() => if (EqOrEquals.e(x, y)) 0.0 else Double.NaN)
 }
 object PartialOrderOrEq {
-  implicit def implicitPartialOrderOrEq[A: EqOrEquals](implicit P: CouldHave[PartialOrder, A]) = new PartialOrderOrEq[A] {}
+  implicit def implicitPartialOrderOrEq[A: EqOrEquals](implicit P: CouldHave[PartialOrder, A]) =
+    new PartialOrderOrEq[A] {}
 
   def apply[A: PartialOrderOrEq]: PartialOrderOrEq[A] = implicitly[PartialOrderOrEq[A]]
 

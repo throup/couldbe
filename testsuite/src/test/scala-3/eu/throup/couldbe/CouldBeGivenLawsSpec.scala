@@ -17,7 +17,10 @@ class CouldBeGivenLawsSpec extends FunSuiteDiscipline with AnyFunSuiteLike with 
   checkAll("CouldBeGiven.InvariantMonoidal", InvariantMonoidalTests[CouldBeGiven].invariantMonoidal[Int, String, Long])
   checkAll("CouldBeGiven.CommutativeMonad", CommutativeMonadTests[CouldBeGiven].commutativeMonad[Int, String, Long])
   checkAll("CouldBeGiven.MonadError", MonadErrorTests[CouldBeGiven, Unit].monadError[Int, String, Long])
-  checkAll("IsGiven.NonEmptyTraverse", NonEmptyTraverseTests[IsGiven].nonEmptyTraverse[List, Int, BigDecimal, String, Long, Option, Option])
+  checkAll(
+    "IsGiven.NonEmptyTraverse",
+    NonEmptyTraverseTests[IsGiven].nonEmptyTraverse[List, Int, BigDecimal, String, Long, Option, Option]
+  )
   checkAll("IsGiven.InvariantMonoidal", InvariantMonoidalTests[IsGiven].invariantMonoidal[Int, String, Long])
   checkAll("IsGiven.Bimonad", BimonadTests[IsGiven].bimonad[Int, String, Long])
   checkAll("IsGiven.CommutativeMonad", CommutativeMonadTests[IsGiven].commutativeMonad[Int, String, Long])

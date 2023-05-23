@@ -7,10 +7,10 @@ import org.scalatest.matchers.should.Matchers
 
 class CouldHaveTest extends AnyFreeSpec with Matchers {
   "Prove it" in {
-    val exampleWillInt = ExampleFunction.couldHaveSomethingToBe[Int]
+    val exampleWillInt    = ExampleFunction.couldHaveSomethingToBe[Int]
     val exampleWillBigInt = ExampleFunction.couldHaveSomethingToBe[BigInt]
     val exampleWillString = ExampleFunction.couldHaveSomethingToBe[String]
-    val exampleWill = exampleWillInt + exampleWillBigInt + exampleWillString
+    val exampleWill       = exampleWillInt + exampleWillBigInt + exampleWillString
 
     exampleWill shouldBe
       """I got nothing!!!

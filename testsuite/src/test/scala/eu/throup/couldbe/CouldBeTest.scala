@@ -10,10 +10,10 @@ class CouldBeTest extends AnyFreeSpec with Matchers {
     // This type definitely does not have a Monad
     class Sam[A]
 
-    val exampleWillInt = ExampleFunction.couldBeAMonad[List]
+    val exampleWillInt    = ExampleFunction.couldBeAMonad[List]
     val exampleWillString = ExampleFunction.couldBeAMonad[Sam]
     val exampleWillDouble = ExampleFunction.couldBeAMonad[Option]
-    val exampleWill = exampleWillInt + exampleWillString + exampleWillDouble
+    val exampleWill       = exampleWillInt + exampleWillString + exampleWillDouble
 
     exampleWill shouldBe
       """I got a Monad!!!!
