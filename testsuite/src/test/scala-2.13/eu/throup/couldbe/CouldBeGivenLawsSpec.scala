@@ -2,10 +2,7 @@ package eu.throup
 package couldbe
 
 import eu.throup.couldbe.testsupport.*
-import eu.throup.couldbe.CouldBeGivenInstance.*
-import eu.throup.couldbe.EqHierarchy.*
-import eu.throup.couldbe.IsGivenInstance.*
-import eu.throup.couldbe.MonoidCouldBeGiven.*
+import eu.throup.couldbe.typeclasses.*
 
 import cats.*
 import cats.kernel.laws.discipline.*
