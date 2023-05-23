@@ -19,6 +19,9 @@ object Versions {
 
     // Manually update this value in project/plugins.sbt as well
     def sbtMdoc = "2.3.7"
+
+    // Manually update this value in project/plugins.sbt as well
+    def scalaFmt = "2.5.0"
   }
   object Override {
     def protobufJava = "[3.16.3,)"

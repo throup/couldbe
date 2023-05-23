@@ -13,7 +13,7 @@ trait LowPriorityNotGiven {
 }
 
 object NotGiven extends LowPriorityNotGiven {
-  def value: NotGiven[Nothing] = new NotGiven[Nothing]()
+  def value: NotGiven[Nothing]                      = new NotGiven[Nothing]()
   implicit def amb1[T](implicit ev: T): NotGiven[T] = ???
   implicit def amb2[T](implicit ev: T): NotGiven[T] = ???
 }
