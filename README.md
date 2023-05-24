@@ -1,12 +1,14 @@
 # couldbe: optional Givens for Scala
 [![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/throup/couldbe/scala.yml)](https://github.com/throup/couldbe/actions/workflows/scala.yml)
+[![couldbe Scala version support](https://index.scala-lang.org/throup/couldbe/couldbe/latest-by-scala-version.svg?platform=jvm)](https://index.scala-lang.org/throup/couldbe/couldbe)
 [![codecov](https://codecov.io/gh/throup/couldbe/branch/main/graph/badge.svg?token=XSUAQWYIOO)](https://codecov.io/gh/throup/couldbe)
+[![javadoc](https://javadoc.io/badge2/eu.throup/couldbe/javadoc.svg)](https://javadoc.io/doc/eu.throup/couldbe)
 
 ![Cats Friendly Badge](https://typelevel.org/cats/img/cats-badge-tiny.png)
 
 ## Overview
 
-**couldbe** is a small library, for the [Scala programming language](https://scala-lang.org), allowing you to refer to optional `given` instances (previously known as implicits).
+**couldbe** is a small library, for the [Scala programming language](https://scala-lang.org), allowing you to refer to optional `given` instances (known as implicits in Scala 2).
 
 Because `given` instances are resolved at compile time, they are either available or they are not. If your code requires a `given` instance, you add it to the function signature; if it doesn't, then you don't.
 
@@ -37,9 +39,9 @@ simpleGivenParameter == "This string is given"
 Please note: it's not usually good practice to pass around something as generic as a `String` type in a `given` instance. This is a simple example to demonstrate the functionality.
 
 ## Getting started
-Packages for **couldbe** are published to [Github's maven registry](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-apache-maven-registry). To include in your project, add the appropriate dependencies to your `build.sbt`:
+To include **couldbe** in your project, add the appropriate dependencies to your `build.sbt`:
 ```sbt
-libraryDependencies += "eu.throup" %% "couldbe" % "<latest version>"
+libraryDependencies += "eu.throup" %% "couldbe" % "<version>"
 ```
 
 The available packages are:
@@ -47,11 +49,6 @@ The available packages are:
 * `couldbe-core`: minimal implementation to allow basic functionality
 * `couldbe-cats`: extra definitions and functionality for those using the [Cats](https://typelevel.org/cats/) library
 * `couldbe-testsupport`: extra definitions and functionality to support writing tests
-
-You will also need to configure access to [Github's package registry](https://docs.github.com/en/packages/learn-github-packages/introduction-to-github-packages). There are many ways to do this, but the simplest is to add [sbt-github-packages](https://github.com/djspiewak/sbt-github-packages) to your `project/plugin.sbt`:
-```sbt
-addSbtPlugin("com.codecommit" % "sbt-github-packages" % "0.5.3")
-```
 
 
 ## Other examples
@@ -82,4 +79,4 @@ def yourFunction[A: CouldBeGiven, B: CouldHave[PartialOrder], F[_]: CouldBe[Mona
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
