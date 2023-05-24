@@ -26,7 +26,7 @@ That's where **couldbe** can help you out.
 (more examples later in the document)
 
 
-<Tabs>
+<Tabs groupId="dialect">
 <TabItem value="scala3" label="Scala 3">
 
 ```scala
@@ -75,19 +75,26 @@ Please note: it's not usually good practice to pass around something as generic 
 
 ## Getting started
 To include **couldbe** in your project, add the appropriate dependencies to your `build.sbt`:
-```sbt
+
+```scala
 libraryDependencies += "eu.throup" %% "couldbe" % "<version>"
 ```
 
 The available packages are:
-* `couldbe`: umbrella meta package to pull in `core` and `cats`
-* `couldbe-core`: minimal implementation to allow basic functionality
-* `couldbe-cats`: extra definitions and functionality for those using the [Cats](https://typelevel.org/cats/) library
-* `couldbe-testsupport`: extra definitions and functionality to support writing tests
 
+| Package               | Contains                                                                                            |
+| --------------------- |---------------------------------------------------------------------------------------------------- |
+| `couldbe`             | umbrella meta package to pull in `core` and `cats`                                                  |
+| `couldbe-core`        | minimal implementation to allow basic functionality                                                 |
+| `couldbe-cats`        | extra definitions and functionality for those using the [Cats](https://typelevel.org/cats/) library |
+| `couldbe-testsupport` | extra definitions and functionality to support writing tests                                        |
 
 ## Other examples
-```
+
+<Tabs groupId="dialect">
+<TabItem value="scala3" label="Scala 3">
+
+```scala
 def yourFunction[A: CouldBeGiven, B: CouldHave[PartialOrder], F[_]: CouldBe[Monad]] =
   // Maybe there was a Given A... maybe there wasn't
   CouldBeGiven[A].act {
@@ -107,6 +114,36 @@ def yourFunction[A: CouldBeGiven, B: CouldHave[PartialOrder], F[_]: CouldBe[Mona
     () => doSomethingUnmonadic()
   }
 ```
+
+</TabItem>
+<TabItem value="scala2" label="Scala 2.13">
+
+```scala
+def yourFunction[A: CouldBeGiven, B, F[_]](
+        implicit B: CouldHave[PartialOrder, B],
+                 F: CouldBe[Monad, F]) = {
+  // Maybe there was a Given A... maybe there wasn't
+  CouldBeGiven[A].act {
+    // If there is one, do something with it.
+    (a: A) => doSomethingWith(a)
+  } {
+    // Otherwise perform some fallback behaviour.
+    () => doSomethingElseWithout()
+  }
+
+  // Maybe F is a Monad... maybe it isn't
+  CouldBe[Monad, F].act {
+    // If it is, do something monadic
+    (monad: Monad[F]) => doSomethingMonadic(monad)
+  } {
+    // Otherwise perform some fallback behaviour.
+    () => doSomethingUnmonadic()
+  }
+}
+```
+
+</TabItem>
+</Tabs>
 
 ## Authors
 
