@@ -11,7 +11,7 @@ import TabItem from '@theme/TabItem';
 [![javadoc](https://javadoc.io/badge2/eu.throup/couldbe/javadoc.svg)](https://javadoc.io/doc/eu.throup/couldbe)
 
 ![Cats Friendly Badge](https://typelevel.org/cats/img/cats-badge-tiny.png)
-
+[![View us on GitHub](https://img.shields.io/badge/view%20us%20on-GitHub-lightgrey?style=for-the-badge&logo=github)](https://github.com/throup/couldbe)
 ## Overview
 
 **couldbe** is a small library, for the [Scala programming language](https://scala-lang.org), allowing you to refer to optional `given` instances (known as implicits in Scala 2).
