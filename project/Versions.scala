@@ -21,13 +21,7 @@ object Versions {
     def scalaFmt = "2.5.0"
 
     // Manually update this value in project/plugins.sbt as well
-    def sbtSonatype = "3.9.21"
-
-    // Manually update this value in project/plugins.sbt as well
-    def sbtPgp = "2.1.1"
-
-    // Manually update this value in project/plugins.sbt as well
-    def sbtCiRelease = "version"
+    def sbtCiRelease = "1.5.12"
   }
   object Override {
     def protobufJava = "[3.16.3,)"

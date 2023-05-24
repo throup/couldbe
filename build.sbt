@@ -1,16 +1,11 @@
-ThisBuild / scalaVersion     := "3.2.2"
-ThisBuild / organization     := "eu.throup"
-ThisBuild / versionScheme    := Some("early-semver")
+ThisBuild / scalaVersion  := "3.2.2"
+ThisBuild / organization  := "eu.throup"
+ThisBuild / versionScheme := Some("early-semver")
 
 import xerial.sbt.Sonatype.*
-sonatypeProjectHosting := Some(GitHubHosting("throup", "couldbe", "chris@throup.eu"))
+sonatypeProjectHosting             := Some(GitHubHosting("throup", "couldbe", "chris@throup.eu"))
 ThisBuild / sonatypeCredentialHost := "s01.oss.sonatype.org"
-sonatypeRepository := "https://s01.oss.sonatype.org/service/local"
-
-//publishMavenStyle := true
-
-// publish to the sonatype repository
-//ThisBuild / publishTo := sonatypePublishToBundle.value
+sonatypeRepository                 := "https://s01.oss.sonatype.org/service/local"
 
 import ReleaseTransformations.*
 releaseCrossBuild := true
@@ -29,17 +24,12 @@ releaseProcess := Seq[ReleaseStep](
   pushChanges
 )
 
-
 lazy val overrides = Seq(
   // Plugin versions; update these in project/plugins.sbt as well
-  "com.github.sbt" % "sbt-release_2.12_1.0"         % Versions.Plugin.sbtRelease,
-  "org.scoverage"  % "sbt-scoverage_2.12_1.0"       % Versions.Plugin.sbtCoverage,
-  "org.scalameta"  % "sbt-mdoc_2.12_1.0"            % Versions.Plugin.sbtMdoc,
-  "org.scalameta"  % "sbt-scalafmt_2.12_1.0"        % Versions.Plugin.scalaFmt,
-/*
-  "org.xerial.sbt" % "sbt-sonatype_2.12_1.0"        % Versions.Plugin.sbtSonatype,
-  "com.jsuereth"   % "sbt-pgp_2.12_1.0"             % Versions.Plugin.sbtPgp,
-*/
+  "com.github.sbt" % "sbt-release_2.12_1.0"    % Versions.Plugin.sbtRelease,
+  "org.scoverage"  % "sbt-scoverage_2.12_1.0"  % Versions.Plugin.sbtCoverage,
+  "org.scalameta"  % "sbt-mdoc_2.12_1.0"       % Versions.Plugin.sbtMdoc,
+  "org.scalameta"  % "sbt-scalafmt_2.12_1.0"   % Versions.Plugin.scalaFmt,
   "com.github.sbt" % "sbt-ci-release_2.12_1.0" % Versions.Plugin.sbtCiRelease,
 // Transitive dependencies; versions specified to avoid known vulnerabilities
   "com.google.protobuf"        % "protobuf-java"    % Versions.Override.protobufJava,
@@ -143,7 +133,7 @@ lazy val docs = (project in file("couldbe-docs")) // important: it must not be d
   .settings(
     moduleName := "couldbe-docs",
     mdocVariables := Map(
-      "VERSION"                  -> version.value
+      "VERSION" -> version.value
     )
   )
   .settings(commonSettings)
