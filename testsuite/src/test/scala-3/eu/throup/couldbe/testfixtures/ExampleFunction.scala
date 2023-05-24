@@ -6,9 +6,7 @@ import cats.*
 import CustomType.*
 
 object ExampleFunction:
-  def simpleGivenParameter(using message: CouldBeGiven[String]): String = message match
-    case IsGiven(actual) => actual
-    case IsNotGiven      => "This is a default string"
+  def simpleGivenParameter(using message: CouldBeGiven[String]): String = message.or("This is a default string")
 
   def couldHaveSomethingToBe[A: CouldHave[SomethingToBe]]: String =
     CouldHave[SomethingToBe, A].act(_ => "I got a SomethingToBe!!!!\n")(() => "I got nothing!!!\n")
