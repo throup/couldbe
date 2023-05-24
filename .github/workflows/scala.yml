@@ -29,6 +29,8 @@ jobs:
         java-version: '11'
         distribution: 'temurin'
         cache: 'sbt'
+    - name: Current project version
+      run: sbt 'show core/version'
     - name: Run tests
       run: sbt +coverage +test
     - name: Coverage Report
