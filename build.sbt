@@ -73,7 +73,16 @@ lazy val commonSettings = Seq(
     }
   },
   licenses := Seq("MIT" -> url("https://opensource.org/license/mit/")),
-  description := "A small library, for the Scala programming language, allowing you to refer to optional given instances (previously known as implicits)."
+  description := "A small library, for the Scala programming language, allowing you to refer to optional given instances (previously known as implicits).",
+  developers := List (
+    Developer(
+      id = "throup",
+      name = "Chris Throup",
+      email = "chris@throup.eu",
+      url = url("https://github.com/throup")
+    )
+  ),
+  homepage := Some(url("https://github.com/throup/couldbe"))
 )
 
 lazy val crossScala = Seq(crossScalaVersions := Seq("2.13.10", "3.2.2"))
