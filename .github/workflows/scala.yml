@@ -35,6 +35,12 @@ jobs:
       run: sbt +coverage +test
     - name: Coverage Report
       run: sbt +coverageAggregate
+      # MiMa checks don't really do anything until we identify a stable release
+      # But included in CI now, to ensure the tooling is in place and doesn't break anything
+    - name: Code style
+      run: sbt +scalafmtCheckAll scalafmtSbtCheck
+    - name: MiMa compatibility checks
+      run: sbt +mimaReportBinaryIssues +tastyMiMaReportIssues
       # Optional: This step uploads information to the GitHub dependency graph and unblocking Dependabot alerts for the repository
     - name: Upload dependency graph
       uses: scalacenter/sbt-dependency-submission@ab086b50c947c9774b70f39fc7f6e20ca2706c91
