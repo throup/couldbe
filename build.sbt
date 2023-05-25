@@ -73,7 +73,7 @@ lazy val commonSettings = Seq(
         )
     }
   },
-  mimaPreviousArtifacts := Set(),
+  mimaPreviousArtifacts      := Set(),
   tastyMiMaPreviousArtifacts := Set()
 )
 
@@ -88,7 +88,7 @@ lazy val publishedProjectSettings = Seq(
       url = url("https://github.com/throup")
     )
   ),
-  homepage              := Some(url("https://github.com/throup/couldbe")),
+  homepage := Some(url("https://github.com/throup/couldbe"))
   // MiMa artifact keys can be enabled after a stable release.
   //  mimaPreviousArtifacts := previousStableVersion.value.map(organization.value %% name.value % _).toSet,
   //  tastyMiMaPreviousArtifacts := previousStableVersion.value.map(organization.value %% name.value % _).toSet
