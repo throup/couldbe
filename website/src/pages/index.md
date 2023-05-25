@@ -5,10 +5,12 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 # couldbe: optional Givens for Scala
+![couldbe social image](/img/couldbe-social-card.jpg)
+
 [![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/throup/couldbe/scala.yml)](https://github.com/throup/couldbe/actions/workflows/scala.yml)
 [![couldbe Scala version support](https://index.scala-lang.org/throup/couldbe/couldbe/latest-by-scala-version.svg?platform=jvm)](https://index.scala-lang.org/throup/couldbe/couldbe)
 [![codecov](https://codecov.io/gh/throup/couldbe/branch/main/graph/badge.svg?token=XSUAQWYIOO)](https://codecov.io/gh/throup/couldbe)
-[![javadoc](https://javadoc.io/badge2/eu.throup/couldbe/javadoc.svg)](https://javadoc.io/doc/eu.throup/couldbe)
+[![javadoc](https://javadoc.io/badge2/eu.throup/couldbe_3/javadoc.svg)](https://javadoc.io/doc/eu.throup/couldbe)
 
 ![Cats Friendly Badge](https://typelevel.org/cats/img/cats-badge-tiny.png)
 [![View us on GitHub](https://img.shields.io/badge/view%20us%20on-GitHub-lightgrey?style=for-the-badge&logo=github)](https://github.com/throup/couldbe)
