@@ -31,6 +31,7 @@ lazy val overrides = Seq(
   "org.scalameta"  % "sbt-mdoc_2.12_1.0"       % Versions.Plugin.sbtMdoc,
   "org.scalameta"  % "sbt-scalafmt_2.12_1.0"   % Versions.Plugin.scalaFmt,
   "com.github.sbt" % "sbt-ci-release_2.12_1.0" % Versions.Plugin.sbtCiRelease,
+  "com.typesafe"   % "sbt-mima-plugin"         % Versions.Plugin.mima,
 // Transitive dependencies; versions specified to avoid known vulnerabilities
   "com.google.protobuf"        % "protobuf-java"    % Versions.Override.protobufJava,
   "com.fasterxml.jackson.core" % "jackson-databind" % Versions.Override.jacksonDatabind,
@@ -72,9 +73,14 @@ lazy val commonSettings = Seq(
         )
     }
   },
+  mimaPreviousArtifacts      := Set(),
+  tastyMiMaPreviousArtifacts := Set()
+)
+
+lazy val publishedProjectSettings = Seq(
   licenses := Seq("MIT" -> url("https://opensource.org/license/mit/")),
   description := "A small library, for the Scala programming language, allowing you to refer to optional given instances (previously known as implicits).",
-  developers := List (
+  developers := List(
     Developer(
       id = "throup",
       name = "Chris Throup",
@@ -83,6 +89,9 @@ lazy val commonSettings = Seq(
     )
   ),
   homepage := Some(url("https://github.com/throup/couldbe"))
+  // MiMa artifact keys can be enabled after a stable release.
+  //  mimaPreviousArtifacts := previousStableVersion.value.map(organization.value %% name.value % _).toSet,
+  //  tastyMiMaPreviousArtifacts := previousStableVersion.value.map(organization.value %% name.value % _).toSet
 )
 
 lazy val crossScala = Seq(crossScalaVersions := Seq("2.13.10", "3.2.2"))
@@ -90,6 +99,7 @@ lazy val crossScala = Seq(crossScalaVersions := Seq("2.13.10", "3.2.2"))
 lazy val root = (project in file("."))
   .settings(name := "couldbe")
   .settings(commonSettings)
+  .settings(publishedProjectSettings)
   .settings(crossScala)
   .aggregate(core, cats, testsupport, testsuite)
   .dependsOn(core, cats)
@@ -97,11 +107,13 @@ lazy val root = (project in file("."))
 lazy val core = project
   .settings(name := "couldbe-core")
   .settings(commonSettings)
+  .settings(publishedProjectSettings)
   .settings(crossScala)
 
 lazy val cats = project
   .settings(name := "couldbe-cats")
   .settings(commonSettings)
+  .settings(publishedProjectSettings)
   .settings(crossScala)
   .settings(
     libraryDependencies ++= Seq(
@@ -113,6 +125,7 @@ lazy val cats = project
 lazy val testsupport = project
   .settings(name := "couldbe-testsupport")
   .settings(commonSettings)
+  .settings(publishedProjectSettings)
   .settings(crossScala)
   .settings(
     libraryDependencies ++= Seq(
