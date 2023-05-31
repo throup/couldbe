@@ -24,3 +24,12 @@ object ExampleFunction:
           CouldBe[MonadSilentFailure, F].act(_.raiseError(()))(() => throw new Exception("It's gone wrong!"))
         }
       }
+
+  def willFailIfNotTwo[F[_]: Monad: MustBeOneOf3[MonadThrow, MonadStringFailure, MonadSilentFailure]](
+      n: Int
+  ): F[String] =
+    if n == 2 then Monad[F].pure("That's great!")
+    else
+      MustBeOneOf3[MonadThrow, MonadStringFailure, MonadSilentFailure, F].act(
+        _.raiseError(new Exception("It's gone wrong!"))
+      )(_.raiseError("It's gone wrong!"))(_.raiseError(()))
