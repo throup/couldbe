@@ -21,9 +21,18 @@ object ExampleFunction {
   ): F[String] =
     if (n == 1) Monad[F].pure("That's great!")
     else
-      CouldBe[MonadThrow, F].act(_.raiseError[String](new Exception("It's gone wrong!"))) { () =>
-        CouldBe[MonadStringFailure, F].act(_.raiseError[String]("It's gone wrong!")) { () =>
-          CouldBe[MonadSilentFailure, F].act(_.raiseError[String](()))(() => throw new Exception("It's gone wrong!"))
+      MT.act(_.raiseError[String](new Exception("It's gone wrong!"))) { () =>
+        MSF.act(_.raiseError[String]("It's gone wrong!")) { () =>
+          MSS.act(_.raiseError[String](()))(() => throw new Exception("It's gone wrong!"))
         }
       }
+
+  def willFailIfNotTwo[F[_]: Monad](
+      n: Int
+  )(implicit MM: MustBeOneOf3[MonadThrow, MonadStringFailure, MonadSilentFailure, F]): F[String] =
+    if (n == 2) Monad[F].pure("That's great!")
+    else
+      MM.act(_.raiseError[String](new Exception("It's gone wrong!")))(_.raiseError[String]("It's gone wrong!"))(
+        _.raiseError[String](())
+      )
 }

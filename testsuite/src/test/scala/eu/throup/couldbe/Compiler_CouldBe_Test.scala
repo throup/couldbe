@@ -9,7 +9,7 @@ import org.scalatest.matchers.should.Matchers
 
 import scala.util.{Failure, Success, Try}
 
-class CompilerTest extends AnyFreeSpec with Matchers {
+class Compiler_CouldBe_Test extends AnyFreeSpec with Matchers {
   "Try error handling" - {
     "Success" - {
       "For Try" in {
