@@ -42,7 +42,7 @@ trait PartialOrderOrEq[A] {
     CouldHave[PartialOrder, A].act(_.partialCompare(x, y))(() => if (EqOrEquals.e(x, y)) 0.0 else Double.NaN)
 }
 object PartialOrderOrEq {
-  implicit def implicitPartialOrderOrEq[A: EqOrEquals](implicit P: CouldHave[PartialOrder, A]) =
+  implicit def implicitPartialOrderOrEq[A: EqOrEquals](implicit P: CouldHave[PartialOrder, A]): PartialOrderOrEq[A] =
     new PartialOrderOrEq[A] {}
 
   def apply[A: PartialOrderOrEq]: PartialOrderOrEq[A] = implicitly[PartialOrderOrEq[A]]
