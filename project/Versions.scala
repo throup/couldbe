@@ -27,7 +27,7 @@ object Versions {
     def mima = "1.1.2"
 
     // Manually update this value in project/plugins.sbt as well
-    def mimaTasty = "0.3.0"
+    def mimaTasty = "0.3.1"
   }
   object Override {
     def protobufJava = "[3.16.3,)"
