@@ -1,0 +1,33 @@
+package eu.throup
+package couldbe
+
+import org.scalatest.freespec.AnyFreeSpec
+import org.scalatest.matchers.should.Matchers
+
+class MustBeGivenOneOf1Test extends AnyFreeSpec with Matchers {
+  "Manually constructed" - {
+    "IsGiven1Of1[String]" - {
+      val ig = IsGiven1Of1[String]("dave")
+
+      "_1 acts as pure getter" in {
+        ig._1 shouldBe ig.a
+      }
+
+      "toLeft returns value" in {
+        // lambda not used; no exception thrown
+        val output = ig.toLeft(str => throw new Exception(str))
+        output shouldBe 123
+      }
+
+      "toRight uses lambda to return value" in {
+        val output = ig.toRight(int => s"Got this: $int")
+        output shouldBe "Got this: 123"
+      }
+
+      "toEither returns Left of value" in {
+        val output = ig.toEither
+        output shouldBe Left(123)
+      }
+    }
+  }
+}
