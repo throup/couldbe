@@ -1,4 +1,4 @@
-ThisBuild / scalaVersion  := "3.3.0"
+ThisBuild / scalaVersion  := "3.3.1"
 ThisBuild / organization  := "eu.throup"
 ThisBuild / versionScheme := Some("early-semver")
 
@@ -94,7 +94,7 @@ lazy val publishedProjectSettings = Seq(
   //  tastyMiMaPreviousArtifacts := previousStableVersion.value.map(organization.value %% name.value % _).toSet
 )
 
-lazy val crossScala = Seq(crossScalaVersions := Seq("2.13.12", "3.3.0"))
+lazy val crossScala = Seq(crossScalaVersions := Seq("2.13.12", "3.3.1"))
 
 lazy val root = (project in file("."))
   .settings(name := "couldbe")
