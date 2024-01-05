@@ -54,7 +54,7 @@ trait PartialOrderOrEq[A: CouldHave[PartialOrder]: EqOrEquals]:
   def p(x: A, y: A): Double =
     CouldHave[PartialOrder, A]
       .act(_.partialCompare(x, y))
-          (() => if EqOrEquals.e(x, y) then 0.0 else Double.NaN)
+          (if EqOrEquals.e(x, y) then 0.0 else Double.NaN)
 ```
 
 </TabItem>
@@ -65,7 +65,7 @@ trait PartialOrderOrEq[A: EqOrEquals](A: CouldHave[PartialOrder, A]) {
   def p(x: A, y: A): Double =
     CouldHave[PartialOrder, A]
       .act(_.partialCompare(x, y))
-          (() => if (EqOrEquals.e(x, y)) 0.0 else Double.NaN)
+          (if (EqOrEquals.e(x, y)) 0.0 else Double.NaN)
 }
 ```
 

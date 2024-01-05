@@ -11,7 +11,7 @@ class CouldBeGivenTest extends AnyFreeSpec with Matchers {
     import GivenImplicit.impStr
 
     def willItCompile[A: CouldBeGiven]: String =
-      CouldBeGiven[A].act(a => s"We got one: $a\n")(() => "Nothing there\n")
+      CouldBeGiven[A].act(a => s"We got one: $a\n")("Nothing there\n")
 
     val exampleWillInt    = willItCompile[Int]
     val exampleWillDouble = willItCompile[Double]

@@ -4,7 +4,7 @@ package couldbe
 import cats.*
 
 trait ShowOrToString[-A: CouldHave[Show]]:
-  def s(a: A): String = CouldHave[Show, A].act(_.show(a))(() => a.toString)
+  def s(a: A): String = CouldHave[Show, A].act(_.show(a))(a.toString)
 object ShowOrToString:
   given [A: CouldHave[Show]]: ShowOrToString[A] = new ShowOrToString[A] {}
 
@@ -13,7 +13,7 @@ object ShowOrToString:
   def s[A: ShowOrToString](a: A): String = ShowOrToString[A].s(a)
 
 trait HashOrHashCode[A: CouldHave[Hash]]:
-  def h(a: A): Int = CouldHave[Hash, A].act(_.hash(a))(() => a.hashCode())
+  def h(a: A): Int = CouldHave[Hash, A].act(_.hash(a))(a.hashCode())
 object HashOrHashCode:
   given [A: CouldHave[Hash]]: HashOrHashCode[A] = new HashOrHashCode[A] {}
 
@@ -22,7 +22,7 @@ object HashOrHashCode:
   def h[A: HashOrHashCode](a: A): Int = HashOrHashCode[A].h(a)
 
 trait EqOrEquals[A: CouldHave[Eq]]:
-  def e(x: A, y: A): Boolean = CouldHave[Eq, A].act(_.eqv(x, y))(() => x.equals(y) && y.equals(x))
+  def e(x: A, y: A): Boolean = CouldHave[Eq, A].act(_.eqv(x, y))(x.equals(y) && y.equals(x))
 object EqOrEquals:
   given [A: CouldHave[Eq]]: EqOrEquals[A] = new EqOrEquals[A] {}
 
@@ -32,7 +32,7 @@ object EqOrEquals:
 
 trait PartialOrderOrEq[A: CouldHave[PartialOrder]: EqOrEquals]:
   def p(x: A, y: A): Double =
-    CouldHave[PartialOrder, A].act(_.partialCompare(x, y))(() => if EqOrEquals.e(x, y) then 0.0 else Double.NaN)
+    CouldHave[PartialOrder, A].act(_.partialCompare(x, y))(if EqOrEquals.e(x, y) then 0.0 else Double.NaN)
 object PartialOrderOrEq:
   given [A: CouldHave[Eq]]: PartialOrderOrEq[A] = new PartialOrderOrEq[A] {}
 
