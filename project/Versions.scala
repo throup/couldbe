@@ -12,13 +12,13 @@ object Versions {
     def sbtRelease = "1.3.0"
 
     // Manually update this value in project/plugins.sbt as well
-    def sbtCoverage = "2.0.8"
+    def sbtCoverage = "2.0.9"
 
     // Manually update this value in project/plugins.sbt as well
-    def sbtMdoc = "2.3.7"
+    def sbtMdoc = "2.3.8"
 
     // Manually update this value in project/plugins.sbt as well
-    def scalaFmt = "2.5.0"
+    def scalaFmt = "2.5.2"
 
     // Manually update this value in project/plugins.sbt as well
     def sbtCiRelease = "1.5.12"
@@ -27,7 +27,7 @@ object Versions {
     def mima = "1.1.3"
 
     // Manually update this value in project/plugins.sbt as well
-    def mimaTasty = "0.3.1"
+    def mimaTasty = "0.5.0"
   }
   object Override {
     def protobufJava = "[3.16.3,)"
