@@ -1,5 +1,5 @@
 object Versions {
-  def cats = "2.9.0"
+  def cats = "2.10.0"
 
   def catsTestkit = "2.1.5"
 
