@@ -104,7 +104,7 @@ def yourFunction[A: CouldBeGiven, B: CouldHave[PartialOrder], F[_]: CouldBe[Mona
     (a: A) => doSomethingWith(a)
   } {
     // Otherwise perform some fallback behaviour.
-    () => doSomethingElseWithout()
+    doSomethingElseWithout()
   }
   
   // Maybe F is a Monad... maybe it isn't
@@ -113,7 +113,7 @@ def yourFunction[A: CouldBeGiven, B: CouldHave[PartialOrder], F[_]: CouldBe[Mona
     (monad: Monad[F]) => doSomethingMonadic(monad)
   } {
     // Otherwise perform some fallback behaviour.
-    () => doSomethingUnmonadic()
+    doSomethingUnmonadic()
   }
 ```
 
@@ -130,7 +130,7 @@ def yourFunction[A: CouldBeGiven, B, F[_]](
     (a: A) => doSomethingWith(a)
   } {
     // Otherwise perform some fallback behaviour.
-    () => doSomethingElseWithout()
+    doSomethingElseWithout()
   }
 
   // Maybe F is a Monad... maybe it isn't
@@ -139,7 +139,7 @@ def yourFunction[A: CouldBeGiven, B, F[_]](
     (monad: Monad[F]) => doSomethingMonadic(monad)
   } {
     // Otherwise perform some fallback behaviour.
-    () => doSomethingUnmonadic()
+    doSomethingUnmonadic()
   }
 }
 ```

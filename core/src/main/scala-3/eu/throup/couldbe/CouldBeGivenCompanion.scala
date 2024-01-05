@@ -8,7 +8,7 @@ private[couldbe] trait CouldBeGivenCompanion:
 
   def apply[A](using go: CouldBeGiven[A]): CouldBeGiven[A] = go
 
-  def act[A, B](f: A => B)(g: () => B)(using go: CouldBeGiven[A]): B = go.act(f)(g)
+  def act[A, B](f: A => B)(fallback: => B)(using go: CouldBeGiven[A]): B = go.act(f)(fallback)
 
   def isGiven[A](a: A): CouldBeGiven[A] = IsGiven(a)
 

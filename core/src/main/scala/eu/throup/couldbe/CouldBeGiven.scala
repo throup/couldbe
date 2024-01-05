@@ -8,10 +8,10 @@ sealed trait CouldBeGiven[+A] {
 
   def or[B >: A](default: => B): B
 
-  def act[B](f: A => B)(g: () => B): B =
+  def act[B](f: A => B)(fallback: => B): B =
     gift match {
       case Some(a) => f(a)
-      case None    => g()
+      case None    => fallback
     }
 
   def map[B](f: A => B): CouldBeGiven[B]

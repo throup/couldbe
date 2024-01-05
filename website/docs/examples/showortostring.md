@@ -97,7 +97,7 @@ In fact, the `couldbe-cats` package provides a ready implementation of `ShowOrTo
 
 ```scala
 trait ShowOrToString[-A: CouldHave[Show]]:
-  def s(a: A): String = CouldHave[Show, A].act(_.show(a))(() => a.toString)
+  def s(a: A): String = CouldHave[Show, A].act(_.show(a))(a.toString)
 ```
 
 </TabItem>
@@ -105,7 +105,7 @@ trait ShowOrToString[-A: CouldHave[Show]]:
 
 ```scala
 trait ShowOrToString[-A](implicit A: CouldHave[Show, A]) {
-  def s(a: A): String = CouldHave[Show, A].act(_.show(a))(() => a.toString)
+  def s(a: A): String = CouldHave[Show, A].act(_.show(a))(a.toString)
 }
 ```
 
