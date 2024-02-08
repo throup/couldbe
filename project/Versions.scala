@@ -3,7 +3,7 @@ object Versions {
 
   def catsTestkit = "2.1.5"
 
-  def scalatest = "3.2.17"
+  def scalatest = "3.2.18"
 
   def scalatestPlus = "3.2.14.0"
 
