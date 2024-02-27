@@ -94,7 +94,7 @@ lazy val publishedProjectSettings = Seq(
   //  tastyMiMaPreviousArtifacts := previousStableVersion.value.map(organization.value %% name.value % _).toSet
 )
 
-lazy val crossScala = Seq(crossScalaVersions := Seq("2.13.12", "3.3.1"))
+lazy val crossScala = Seq(crossScalaVersions := Seq("2.13.13", "3.3.1"))
 
 lazy val root = (project in file("."))
   .settings(name := "couldbe")
