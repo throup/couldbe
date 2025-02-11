@@ -32,7 +32,7 @@ object Versions {
   object Override {
     def protobufJava = "[3.16.3,)"
 
-    def jacksonDatabind = "[2.13.4.2,)"
+    def jacksonDatabind = "2.18.2"
 
     def jsoup = "[1.15.3,)"
 
