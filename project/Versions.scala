@@ -34,7 +34,7 @@ object Versions {
 
     def jacksonDatabind = "[2.13.4.2,)"
 
-    def jsoup = "[1.15.3,)"
+    def jsoup = "1.19.1"
 
     def snakeyaml = "[2.0,)"
 
