@@ -21,7 +21,7 @@ object Versions {
     def scalaFmt = "2.5.2"
 
     // Manually update this value in project/plugins.sbt as well
-    def sbtCiRelease = "1.5.12"
+    def sbtCiRelease = "1.11.0"
 
     // Manually update this value in project/plugins.sbt as well
     def mima = "1.1.3"
