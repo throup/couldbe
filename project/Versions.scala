@@ -38,7 +38,7 @@ object Versions {
 
     def snakeyaml = "[2.0,)"
 
-    def pdfbox = "[2.0.24,)"
+    def pdfbox = "3.0.6"
 
     def undertow = "[2.2.24.Final,)"
   }
