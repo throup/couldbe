@@ -18,7 +18,7 @@ object Versions {
     def sbtMdoc = "2.3.8"
 
     // Manually update this value in project/plugins.sbt as well
-    def scalaFmt = "2.5.2"
+    def scalaFmt = "2.5.6"
 
     // Manually update this value in project/plugins.sbt as well
     def sbtCiRelease = "1.5.12"
