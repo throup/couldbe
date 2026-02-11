@@ -54,9 +54,8 @@ class Compiler_CouldBe_Test extends AnyFreeSpec with Matchers {
       "For Either[_, Unit]" in {
         ExampleFunction.willFailIfNotOne[EitherUnit](2) shouldBe Left(())
       }
-      "For Id" in {
+      "For Id" in
         assertThrows[Exception](ExampleFunction.willFailIfNotOne[Id](2))
-      }
     }
   }
 }
