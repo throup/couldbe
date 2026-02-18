@@ -24,7 +24,7 @@ object Versions {
     def sbtCiRelease = "1.5.12"
 
     // Manually update this value in project/plugins.sbt as well
-    def mima = "1.1.3"
+    def mima = "1.1.5"
 
     // Manually update this value in project/plugins.sbt as well
     def mimaTasty = "0.5.0"
