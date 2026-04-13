@@ -9,7 +9,7 @@ sonatypeRepository                 := "https://s01.oss.sonatype.org/service/loca
 
 import ReleaseTransformations.*
 releaseCrossBuild := true
-releaseProcess := Seq[ReleaseStep](
+releaseProcess    := Seq[ReleaseStep](
   checkSnapshotDependencies,
   inquireVersions,
   runClean,
@@ -153,7 +153,7 @@ lazy val testsuite = project
 
 lazy val docs = (project in file("couldbe-docs")) // important: it must not be docs/
   .settings(
-    moduleName := "couldbe-docs",
+    moduleName    := "couldbe-docs",
     mdocVariables := Map(
       "VERSION" -> version.value
     )
