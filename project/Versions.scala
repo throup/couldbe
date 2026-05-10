@@ -9,7 +9,7 @@ object Versions {
 
   object Plugin {
     // Manually update this value in project/plugins.sbt as well
-    def sbtRelease = "1.3.0"
+    def sbtRelease = "1.5.0"
 
     // Manually update this value in project/plugins.sbt as well
     def sbtCoverage = "2.0.9"
