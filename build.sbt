@@ -129,7 +129,7 @@ lazy val testsupport = project
   .settings(crossScala)
   .settings(
     libraryDependencies ++= Seq(
-      "org.scalatestplus" %% "scalacheck-1-16" % Versions.scalatestPlus
+      "org.scalatestplus" %% "scalacheck-1-17" % Versions.scalatestPlus
     )
   )
   .dependsOn(core, cats)
