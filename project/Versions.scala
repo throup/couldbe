@@ -5,7 +5,7 @@ object Versions {
 
   def scalatest = "3.2.17"
 
-  def scalatestPlus = "3.2.14.0"
+  def scalatestPlus = "3.2.18.0"
 
   object Plugin {
     // Manually update this value in project/plugins.sbt as well
