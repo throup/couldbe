@@ -36,7 +36,7 @@ object Versions {
 
     def jsoup = "[1.15.3,)"
 
-    def snakeyaml = "[2.0,)"
+    def snakeyaml = "2.7"
 
     def pdfbox = "[2.0.24,)"
 
