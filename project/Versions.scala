@@ -15,7 +15,7 @@ object Versions {
     def sbtCoverage = "2.0.9"
 
     // Manually update this value in project/plugins.sbt as well
-    def sbtMdoc = "2.3.8"
+    def sbtMdoc = "2.9.2"
 
     // Manually update this value in project/plugins.sbt as well
     def scalaFmt = "2.5.2"
