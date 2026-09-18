@@ -30,7 +30,7 @@ object Versions {
     def mimaTasty = "0.5.0"
   }
   object Override {
-    def protobufJava = "[3.16.3,)"
+    def protobufJava = "4.36.2"
 
     def jacksonDatabind = "[2.13.4.2,)"
 
