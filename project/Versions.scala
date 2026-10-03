@@ -40,6 +40,6 @@ object Versions {
 
     def pdfbox = "[2.0.24,)"
 
-    def undertow = "[2.2.24.Final,)"
+    def undertow = "2.4.4.Final"
   }
 }
